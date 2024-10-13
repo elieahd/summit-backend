@@ -1,0 +1,31 @@
+name: Reusable Workflow - Build
+
+on: workflow_call
+
+jobs:
+  build:
+    name: 🔨 Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⤵️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '23'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: 📦️ Package application
+        run: mvn package -Dmaven.test.skip
+
+      - name: 👓 Extract version
+        id: extract-version
+        run: |
+          project_version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)
+          version_without_snapshot=${project_version%-SNAPSHOT}
+          echo "version=$version_without_snapshot" >> "$GITHUB_OUTPUT"
+
+      - name: 🐳 Build/Push Docker Image
+        run: echo "todo build/push image 'summit:${{ steps.extract-version.outputs.version }}'"

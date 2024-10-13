@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/v0.1.0/0001-create-member-table.sql
+  - include:
+      file: db/changelog/v0.1.0/0002-create-tracker-template-table.sql
