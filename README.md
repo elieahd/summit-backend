@@ -20,29 +20,30 @@
 
 ## Backlog
 
-- [ ] Security / OAuth2
-- [ ] Add Kafka listener
-- [ ] Caching with Redis
-- [ ] Performance tests (K6 or Gatling)
-- [ ] Feature flag
-- [ ] Reporting module
-- [ ] Audit
-- [ ] Communication / Notification
-- [ ] Batch capacity (Spring Batch)
+- [ ] security `oauth2`/`jwt`
+- [ ] queues (`kafka` or `rabbitMQ`)
+- [ ] caching with `redis`
+- [ ] performance tests (`k6` or `gatling`)
+- [ ] reporting (generate pdf and cvs on some data)
+- [ ] audit to track changes happening on an entity
+- [ ] communication / notification (maybe `thymeleaf` and send emails)
+- [ ] batch (`spring batch` & `k8s cron job`)
 
 ## Devops
 
-- [ ] push on `develop` -> deploy on k8s (AWS or GCP or Azure)
-- [ ] decide on a git branching strategy -> trunc based or gitflow
+- [ ] push on `develop` -> deploy on k8s (`AWS` or `GCP` or `Azure`)
+- [ ] decide on a git branching strategy -> `trunc based` or `gitflow`
+- [ ] feature flag
+- [ ] decide on if i want to explore gitops (ArgoCD or other options)
 
-## Docs todo 
+## Documentations 
 
-- Database migration -> liquibase
-- Code architecture -> DDD & Hexagonal Architecture
-- Unit test with stubs instead of mocking it and with test data
-- API documentation via Swagger
-- Integration test on Persistence layer with Test Containers
-- Integration test on Rest API with Test Containers and Rest Assured
-- Pipelines automated dependencies upgrades via GitHub dependabot
-- Pipelines automated checks on PRs via GitHub Actions and Sonar
-- Pipelines automated deployment on push on develop via GitHub Actions, Docker 
+- [ ] [Database migration via liquibase](./docs/db-migration-liquibase.md)
+- [ ] [Code architecture via DDD & Hexagonal Architecture](./docs/architecture-ddd-hexagonal.md)
+- [ ] [Unit test with stubs instead of mocking it and with test data](./docs/unit-tests-stubs.md)
+- [ ] [API documentation via Swagger](./docs/api-documentation-swagger.md)
+- [ ] [Integration test on Persistence layer with Test Containers](./docs/int-tests-persistence.md)
+- [ ] [Integration test on Rest API with Test Containers and Rest Assured](./docs/int-tests-rest-api.md)
+- [ ] [Pipelines automated dependencies upgrades via GitHub dependabot](./docs/gha-dependabot.md)
+- [ ] [Pipelines automated checks on PRs via GitHub Actions and Sonar](./docs/gha-pr.md)
+- [ ] [Pipelines automated deployment on push on develop via GitHub Actions, Docker](./docs/gha-deploy.md)
