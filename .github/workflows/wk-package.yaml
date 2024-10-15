@@ -27,8 +27,11 @@ jobs:
           version_without_snapshot=${project_version%-SNAPSHOT}
           echo "version=$version_without_snapshot" >> "$GITHUB_OUTPUT"
 
-      - name: 🐳 Login to docker hub
-        run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login --username "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+      - name: 🐳 Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
       - name: 🐳 Build Docker Image
         run: docker build -t summit-backend:${{ steps.extract-version.outputs.version }} .
