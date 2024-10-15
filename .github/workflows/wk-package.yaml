@@ -1,4 +1,4 @@
-name: Reusable Workflow - Package
+name: Reusable Workflow - 📦️ Package
 
 on:
   workflow_call:

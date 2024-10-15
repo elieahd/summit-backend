@@ -1,4 +1,4 @@
-name: Reusable Workflow - Checks
+name: Reusable Workflow - ✅ Checks
 
 on:
   workflow_call:

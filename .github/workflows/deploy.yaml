@@ -10,13 +10,13 @@ on:
 jobs:
 
   checks:
-    name: Pre-deployment checks
+    name: ✅ Pre-deployment checks
     uses: ./.github/workflows/wk-checks.yaml
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   package:
-    name: Package app
+    name: 📦️ Package app
     needs: [ checks ]
     uses: ./.github/workflows/wk-package.yaml
     secrets:
