@@ -41,5 +41,5 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: 🐳 Push Docker Image to registry
-        run: docker push summit-backend:${{ steps.extract-version.outputs.version }}
+        run: docker push ${{ vars.DOCKERHUB_USERNAME }}/summit-backend:${{ steps.extract-version.outputs.version }}
         # docker run -p 8080:8080 summit-backend:0.1.0
