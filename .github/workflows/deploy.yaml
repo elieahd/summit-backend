@@ -8,7 +8,6 @@ on:
       - 'docs/**'
 
 jobs:
-
   checks:
     name: ✅ Pre-deployment checks
     uses: ./.github/workflows/wk-checks.yaml
@@ -19,5 +18,7 @@ jobs:
     name: 📦️ Package app
     needs: [ checks ]
     uses: ./.github/workflows/wk-package.yaml
+    with:
+      image-name: summit-backend
     secrets:
       DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}

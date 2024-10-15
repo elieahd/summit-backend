@@ -2,6 +2,10 @@ name: Reusable Workflow - 📦️ Package
 
 on:
   workflow_call:
+    inputs:
+      image-name:
+        required: true
+        type: string
     secrets:
       DOCKERHUB_TOKEN:
         required: true
@@ -38,9 +42,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: 🐳 Build Docker Image
-        run: docker build -t ${{ vars.DOCKERHUB_USERNAME }}/summit-backend:${{ steps.extract-version.outputs.version }} .
+        run: docker build -t ${{ vars.DOCKERHUB_USERNAME }}/${{ inputs.image-name }}:${{ steps.extract-version.outputs.version }} .
 
       - name: 🐳 Push Docker Image to registry
-        run: docker image push --all-tags ${{ vars.DOCKERHUB_USERNAME }}/summit-backend
-
-        # docker run -p 8080:8080 summit-backend:0.1.0
+        run: docker image push --all-tags ${{ vars.DOCKERHUB_USERNAME }}/${{ inputs.image-name }}
