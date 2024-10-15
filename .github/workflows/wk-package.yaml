@@ -11,7 +11,7 @@ on:
         required: true
     outputs:
       version:
-        description: "Pack"
+        description: "Package version"
         value: ${{ jobs.package.outputs.version }}
 
 jobs:
