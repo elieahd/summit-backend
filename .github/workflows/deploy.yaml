@@ -16,7 +16,6 @@ jobs:
 
   package:
     name: 📦️ Package app
-    id: package
     needs: [ checks ]
     uses: ./.github/workflows/wk-package.yaml
     with:
