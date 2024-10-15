@@ -13,8 +13,8 @@
 - [x] GitHub Actions dependabot
 - [x] GitHub Actions pull-requests
 - [x] [PR template](./.github/pull_request_template.md)
-- [~] Docker
-- [~] GitHub Actions push-on-develop -> needs to include docker build/push command 
+- [x] Docker
+- [x] GitHub Actions push-on-develop -> needs to include docker build/push command 
 - [~] Sonar --> need to fix coverage not showing
 - [ ] Complete application
 
