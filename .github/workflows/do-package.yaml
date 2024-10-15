@@ -1,10 +1,10 @@
-name: Reusable Workflow - Build
+name: Reusable Workflow - Package
 
 on: workflow_call
 
 jobs:
   build:
-    name: 🔨 Build
+    name: 📦️ Package
     runs-on: ubuntu-latest
     steps:
       - name: ⤵️ Checkout code
@@ -28,7 +28,7 @@ jobs:
           echo "version=$version_without_snapshot" >> "$GITHUB_OUTPUT"
 
       - name: 🐳 Login to docker hub
-        run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+        run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login --username "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
       - name: 🐳 Build Docker Image
         run: docker build -t summit-backend:${{ steps.extract-version.outputs.version }} .

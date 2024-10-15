@@ -11,11 +11,11 @@ jobs:
 
   checks:
     name: Pre-deployment checks
-    uses: ./.github/workflows/checks.yaml
+    uses: ./.github/workflows/do-checks.yaml
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-  build:
-    name: Build app
+  package:
+    name: Package app
     needs: [ checks ]
-    uses: ./.github/workflows/build.yaml
+    uses: ./.github/workflows/do-package.yaml
