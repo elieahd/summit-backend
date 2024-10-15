@@ -1,4 +1,4 @@
-FROM amazoncorretto:23
+FROM eclipse-temurin:23-jdk
 
 COPY infrastructure/target/summit-infrastructure-*.jar summit.jar
 

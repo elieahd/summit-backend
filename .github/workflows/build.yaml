@@ -27,5 +27,8 @@ jobs:
           version_without_snapshot=${project_version%-SNAPSHOT}
           echo "version=$version_without_snapshot" >> "$GITHUB_OUTPUT"
 
-      - name: 🐳 Build/Push Docker Image
-        run: echo "todo build/push image 'summit:${{ steps.extract-version.outputs.version }}'"
+      - name: 🐳 Build Docker Image
+        run: docker build -t summit:${{ steps.extract-version.outputs.version }} .
+
+      - name: 🐳 Push Docker Image to registry
+        run: docker push summit:${{ steps.extract-version.outputs.version }}

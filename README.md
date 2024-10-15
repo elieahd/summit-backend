@@ -10,12 +10,12 @@
 - [x] Integration test on JDBC with test containers
 - [x] Integration test on Rest API with test containers & rest assured
 - [x] Checkstyle
-- [x] Github Actions dependabot
-- [x] Github Actions pull-requests
+- [x] GitHub Actions dependabot
+- [x] GitHub Actions pull-requests
 - [x] [PR template](./.github/pull_request_template.md)
 - [ ] Sonar --> need to fix coverage not showing
 - [ ] Docker
-- [ ] Github Actions push-on-develop -> needs to include docker build/push command 
+- [ ] GitHub Actions push-on-develop -> needs to include docker build/push command 
 - [ ] Complete application
 
 ## Backlog
@@ -23,7 +23,6 @@
 - [ ] security `oauth2`/`jwt`
 - [ ] queues (`kafka` or `rabbitMQ`)
 - [ ] caching with `redis`
-- [ ] performance tests (`k6` or `gatling`)
 - [ ] reporting (generate pdf and cvs on some data)
 - [ ] audit to track changes happening on an entity
 - [ ] communication / notification (maybe `thymeleaf` and send emails)
@@ -32,6 +31,7 @@
 ## Devops
 
 - [ ] push on `develop` -> deploy on k8s (`AWS` or `GCP` or `Azure`)
+- [ ] performance tests (`k6` or `gatling`)
 - [ ] decide on a git branching strategy -> `trunc based` or `gitflow`
 - [ ] feature flag
 - [ ] decide on if i want to explore gitops (ArgoCD or other options)
