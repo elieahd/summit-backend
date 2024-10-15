@@ -9,7 +9,7 @@ on:
 
 jobs:
   deploy:
-    name: 🚀 Deploy
+    name: 🚀 Deploy '${{ inputs.image }}'
     runs-on: ubuntu-latest
     steps:
       - name: ⤵️ Checkout code

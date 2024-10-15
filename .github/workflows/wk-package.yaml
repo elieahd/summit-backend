@@ -16,7 +16,7 @@ on:
 
 jobs:
   package:
-    name: 📦️ Package
+    name: 📦️ Package, Build & Push docker image '${{ inputs.image-name }}'
     runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.extract-version.outputs.version }}
