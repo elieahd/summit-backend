@@ -16,9 +16,17 @@ jobs:
 
   package:
     name: 📦️ Package app
+    id: package
     needs: [ checks ]
     uses: ./.github/workflows/wk-package.yaml
     with:
       image-name: summit-backend
     secrets:
       DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+
+  deploy:
+    name: 🚀 Deploy
+    needs: [ package ]
+    uses: ./.github/workflows/wk-deploy.yaml
+    with:
+      image: ${{ vars.DOCKERHUB_USERNAME }}/summit-backend:${{ needs.package.outputs.version }}

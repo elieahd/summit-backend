@@ -9,11 +9,17 @@ on:
     secrets:
       DOCKERHUB_TOKEN:
         required: true
+    outputs:
+      version:
+        description: "Pack"
+        value: ${{ jobs.package.outputs.version }}
 
 jobs:
-  build:
+  package:
     name: 📦️ Package
     runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.extract-version.outputs.version }}
     steps:
       - name: ⤵️ Checkout code
         uses: actions/checkout@v4

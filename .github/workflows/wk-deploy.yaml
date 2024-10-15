@@ -1,0 +1,19 @@
+name: Reusable Workflow - 🚀 Deploy
+
+on:
+  workflow_call:
+    inputs:
+      image:
+        required: true
+        type: string
+
+jobs:
+  deploy:
+    name: 🚀 Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⤵️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: Todo
+        run: echo "${{ inputs.image }}"
