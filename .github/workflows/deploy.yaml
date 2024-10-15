@@ -19,3 +19,5 @@ jobs:
     name: Package app
     needs: [ checks ]
     uses: ./.github/workflows/wk-package.yaml
+    secrets:
+      DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
