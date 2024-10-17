@@ -67,5 +67,7 @@ jobs:
       - name: 🔖 Tag
         if: inputs.tag
         run: |
+          git config --global user.email "gha@devt.com"
+          git config --global user.name "Pipeline"
           git tag -a ${{ steps.extract-version.outputs.version }} -m "release candidate v${{ steps.extract-version.outputs.version }}"
           git push origin ${{ steps.extract-version.outputs.version }}
