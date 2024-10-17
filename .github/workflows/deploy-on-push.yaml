@@ -6,6 +6,7 @@ on:
       - 'develop'
     paths-ignore:
       - 'docs/**'
+      - '**.md'
 
 jobs:
   checks:
@@ -15,11 +16,12 @@ jobs:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   package:
-    name: 📦️ Package app
+    name: 📦️ Package
     needs: [ checks ]
     uses: ./.github/workflows/wk-package.yaml
     with:
-      image-name: summit-backend
+      image-name: 'summit-backend'
+      tag: true
     secrets:
       DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
 
@@ -28,4 +30,5 @@ jobs:
     needs: [ package ]
     uses: ./.github/workflows/wk-deploy.yaml
     with:
-      image: ${{ vars.DOCKERHUB_USERNAME }}/summit-backend:${{ needs.package.outputs.version }}
+      image: ${{ needs.package.outputs.image }}
+

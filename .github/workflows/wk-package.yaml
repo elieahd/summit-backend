@@ -6,6 +6,10 @@ on:
       image-name:
         required: true
         type: string
+      tag:
+        required: true
+        default: false
+        type: boolean
     secrets:
       DOCKERHUB_TOKEN:
         required: true
@@ -13,6 +17,9 @@ on:
       version:
         description: "Package version"
         value: ${{ jobs.package.outputs.version }}
+      image:
+        description: "Image built and pushed to docker registry"
+        value: ${{ jobs.package.outputs.image }}
 
 jobs:
   package:
@@ -20,6 +27,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.extract-version.outputs.version }}
+      image: ${{ steps.image-pushed.outputs.image }}
     steps:
       - name: ⤵️ Checkout code
         uses: actions/checkout@v4
@@ -51,4 +59,13 @@ jobs:
         run: docker build -t ${{ vars.DOCKERHUB_USERNAME }}/${{ inputs.image-name }}:${{ steps.extract-version.outputs.version }} .
 
       - name: 🐳 Push Docker Image to registry
-        run: docker image push --all-tags ${{ vars.DOCKERHUB_USERNAME }}/${{ inputs.image-name }}
+        id: image-pushed
+        run: |
+          docker image push --all-tags ${{ vars.DOCKERHUB_USERNAME }}/${{ inputs.image-name }} 
+          echo "image=${{ vars.DOCKERHUB_USERNAME }}/${{ inputs.image-name }}:${{ steps.extract-version.outputs.version }}" >> "$GITHUB_OUTPUT"
+
+      - name: 🔖 Tag
+        if: inputs.tag
+        run: |
+          git tag -a ${{ steps.extract-version.outputs.version }} -m "release candidate v${{ steps.extract-version.outputs.version }}"
+          git push origin ${{ steps.extract-version.outputs.version }}
