@@ -21,7 +21,6 @@ jobs:
     uses: ./.github/workflows/wk-package.yaml
     with:
       image-name: 'summit-backend'
-      tag: true
     secrets:
       DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
 

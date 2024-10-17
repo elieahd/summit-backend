@@ -15,7 +15,7 @@
 - [x] GitHub Actions pull-requests
 - [x] [PR template](./.github/pull_request_template.md)
 - [x] Docker
-- [x] GitHub Actions push-on-develop -> needs to include docker build/push command
+- [x] GitHub Actions push-on-develop 
 - [ ] Sonar --> coverage not showing (jacoco with multi-module)
 - [ ] Complete application
 
@@ -34,6 +34,7 @@
 - [ ] decide on a git branching strategy -> `trunc based` or `gitflow`
 - [ ] feature flag
 - [ ] decide on if i want to explore gitops (ArgoCD or other options)
+- [ ] tag on release
 
 ## Technical features
 
@@ -45,4 +46,4 @@
 - Integration test on Rest API with Test Containers and Rest Assured
 - Pipelines automated dependencies upgrades via GitHub dependabot
 - Pipelines automated checks on PRs via GitHub Actions and Sonar
-- Pipelines automated deployment on push on develop via GitHub Actions, Docker, Tag
+- Pipelines automated deployment on push on develop via GitHub Actions, Docker
